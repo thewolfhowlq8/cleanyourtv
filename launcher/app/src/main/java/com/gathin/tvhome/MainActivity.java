@@ -291,7 +291,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         sourcePanelAction = cfg.sourcePanelAction;
 
         root = findViewById(R.id.root);
-        root.setBackgroundColor(cfg.backgroundColor);
+        // Keep the bundled Midnight Glass gradient; a plain backgroundColor overwrote the XML drawable.
+        root.setBackgroundResource(R.drawable.midnight_backdrop);
         wallpaperPlayer = new WallpaperPlayer(this, root, cfg);
         sky = findViewById(R.id.sky);
         sky.setIntensity(cfg.skyIntensity);
