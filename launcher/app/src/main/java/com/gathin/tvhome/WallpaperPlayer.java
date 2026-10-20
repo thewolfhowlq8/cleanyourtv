@@ -45,7 +45,8 @@ final class WallpaperPlayer {
         image = new ImageView(context);
         image.setScaleType(ImageView.ScaleType.CENTER_CROP);
         image.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
-        if (config.wallpaperEnabled && !files.isEmpty()) {
+        if (config.wallpaperEnabled && !files.isEmpty()
+                && !context.getPackageName().contains("noir2026")) {
             root.addView(image, 0, new FrameLayout.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             // No shade layer at all when the theme doesn't dim: a full-screen view is overdraw on 1 GB TVs.

@@ -1,6 +1,8 @@
 package com.gathin.tvhome;
 
 import android.graphics.Canvas;
+import android.graphics.LinearGradient;
+import android.graphics.Shader;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
@@ -22,10 +24,10 @@ public class DockDecoration extends RecyclerView.ItemDecoration {
     DockDecoration(int dockSize, float density, boolean translucent) {
         this.dockSize = dockSize;
         this.density = density;
-        band.setColor(translucent ? 0x8C121014 : 0xFF141416);
+        band.setColor(0xF0080D12);
         edge.setStyle(Paint.Style.STROKE);
-        edge.setStrokeWidth(density);
-        edge.setColor(translucent ? 0x26FFFFFF : 0x1FFFFFFF);
+        edge.setStrokeWidth(1.5f * density);
+        edge.setColor(0xAA8CA7B9);
     }
 
     @Override
@@ -60,10 +62,17 @@ public class DockDecoration extends RecyclerView.ItemDecoration {
             }
         }
         if (!any) return;
-        float pad = 14 * density;
+        float pad = 30 * density;
         rect.inset(-pad, -pad);
-        float radius = 26 * density;
+        float radius = 28 * density;
+        band.setShader(new LinearGradient(rect.left, rect.top, rect.right, rect.bottom,
+                new int[]{0xF21B2832, 0xF00A1017, 0xF218232D}, null, Shader.TileMode.CLAMP));
         c.drawRoundRect(rect, radius, radius, band);
         c.drawRoundRect(rect, radius, radius, edge);
+        // A subtle luminous upper lip distinguishes the floating dock from a flat old-style band.
+        Paint lip = new Paint(Paint.ANTI_ALIAS_FLAG);
+        lip.setColor(0x889AB7CA);
+        lip.setStrokeWidth(1.2f * density);
+        c.drawLine(rect.left + radius, rect.top + density, rect.right - radius, rect.top + density, lip);
     }
 }

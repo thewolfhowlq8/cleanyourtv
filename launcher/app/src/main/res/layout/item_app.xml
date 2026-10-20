@@ -2,8 +2,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="8dp"
-    android:paddingBottom="8dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
     android:clipChildren="false"
     android:clipToPadding="false">
 
@@ -13,6 +13,7 @@
         android:layout_height="101dp"
         android:layout_gravity="center_horizontal|top"
         android:background="@drawable/tile_bg"
+        android:elevation="6dp"
         android:focusable="true"
         android:clickable="true">
 
@@ -23,10 +24,17 @@
             android:scaleType="centerCrop"
             android:contentDescription="@null" />
 
+        <!-- NOIR glass tint is intentionally above the app artwork, unlike the old hidden tile background. -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#44040A10"
+            android:importantForAccessibility="no" />
+
         <ImageView
             android:id="@+id/icon"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="58dp"
+            android:layout_height="58dp"
             android:layout_gravity="center"
             android:layout_marginBottom="14dp"
             android:visibility="gone"
@@ -60,7 +68,7 @@
         android:ellipsize="end"
         android:alpha="0"
         android:translationY="-6dp"
-        android:textColor="#F2FFFFFF"
+        android:textColor="#FFE1EAF4"
         android:textSize="14sp"
         android:fontFamily="@font/outfit_medium"
         android:letterSpacing="0.02" />

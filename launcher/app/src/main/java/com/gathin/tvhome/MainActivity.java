@@ -277,7 +277,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         Config cfg = Config.load(this);
         settingsKeycodes = cfg.settingsKeycodes;
         settingsKeyPanel = cfg.settingsKeyPanel;
-        COLUMNS = cfg.columns;
+        // NOIR uses a fixed four-slot dock regardless of old saved layout preferences.
+        COLUMNS = 4;
         animations = cfg.animations;
         advancedEffects = cfg.animations && cfg.advancedEffects;
         reducedMotion = cfg.reducedMotion;
@@ -291,10 +292,11 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         sourcePanelAction = cfg.sourcePanelAction;
 
         root = findViewById(R.id.root);
-        root.setBackgroundColor(cfg.backgroundColor);
+        // Keep the bundled Midnight Glass gradient; a plain backgroundColor overwrote the XML drawable.
+        root.setBackgroundResource(R.drawable.midnight_backdrop);
         wallpaperPlayer = new WallpaperPlayer(this, root, cfg);
         sky = findViewById(R.id.sky);
-        sky.setIntensity(cfg.skyIntensity);
+        sky.setIntensity(0); // NOIR has its own charcoal background
         glass = findViewById(R.id.glass);
         if (festive) glass.setAccent(festival.accentColor());
         ambient = findViewById(R.id.ambient);
@@ -309,7 +311,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         heroMeta = findViewById(R.id.heroMeta);
         heroDots = findViewById(R.id.heroDots);
         heroArt = findViewById(R.id.heroArt);
-        cinematic = cfg.cinematicHome;
+        cinematic = false; // Avoid artwork tint replacing the NOIR identity
         if (cinematic) setUpCinematicShelf();
         // dock_title false: the name above the dock (and the cinematic lines under it) never shows; the glow
         // still follows the dock.
@@ -408,7 +410,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
 
         // tvOS layout: push the dock row towards the bottom of the screen, leaving room for
         // rows_below_dock grid rows under it; the rest of the grid stays below until you press Down.
-        int rowsBelowDock = cfg.rowsBelowDock;
+        int rowsBelowDock = 0; // NOIR first screen has one prominent dock row
         grid.addOnLayoutChangeListener((v, l, t, r, b, ol, ot, or, ob) -> {
             int h = b - t;
             // Item height follows the tile size, which follows the columns and the rows that must fit (AppAdapter.tileWidthPx).

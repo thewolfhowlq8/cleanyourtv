@@ -1,0 +1,14 @@
+{
+  "background_color": "#080B10",
+  "dock_row": true,
+  "dock_title": true,
+  "columns": 4,
+  "rows_below_dock": 0,
+  "animations": true,
+  "advanced_effects": true,
+  "reduced_motion": false,
+  "cinematic_home": true,
+  "sky_intensity": 12,
+  "wallpaper": false,
+  "show_stats": false
+}

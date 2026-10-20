@@ -1,0 +1,58 @@
+name: Build CleanYourTV 2.0 APK
+
+on:
+  push:
+    branches:
+      - feature/luxury-dark-v2
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      # GitHub-hosted Ubuntu runners include Android SDK command-line tools.
+      # Avoid setup-android's legacy 'tools' package request, which fails upstream.
+      - name: Verify Android SDK
+        shell: bash
+        run: |
+          echo "ANDROID_HOME=${ANDROID_HOME}"
+          test -d "${ANDROID_HOME}/platforms" || { echo 'Android SDK platforms missing'; exit 1; }
+          test -d "${ANDROID_HOME}/build-tools" || { echo 'Android SDK build-tools missing'; exit 1; }
+      - name: Build debug APK
+        working-directory: launcher
+        run: bash ./gradlew --no-daemon :app:assembleDebug -PlauncherApplicationId=com.gathin.tvhome.noir2026
+      - name: Name direct-install APK
+        shell: bash
+        run: |
+          cp launcher/app/build/outputs/apk/debug/app-debug.apk CleanYourTV-NOIR-v3.apk
+          test -s CleanYourTV-NOIR-v3.apk
+      - name: Publish APK directly to GitHub Releases
+        if: github.event_name == 'push' && github.ref == 'refs/heads/feature/luxury-dark-v2'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          gh release create "luxury-dark-build-${GITHUB_RUN_NUMBER}" CleanYourTV-NOIR-v3.apk \
+            --repo "$GITHUB_REPOSITORY" \
+            --target "$GITHUB_SHA" \
+            --title "CleanYourTV NOIR v3 - Test build ${GITHUB_RUN_NUMBER}" \
+            --notes "Experimental debug APK. Installs alongside the original launcher. Keep the original launcher installed." \
+            --prerelease
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: CleanYourTV-2.0-Luxury-Dark-debug
+          path: launcher/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 14

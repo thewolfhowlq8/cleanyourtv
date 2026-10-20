@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Luxury Dark: high-contrast focus remains readable from a sofa. -->
     <item android:state_focused="true">
         <shape android:shape="rectangle">
-            <solid android:color="#F5FFFFFF" />
+            <gradient android:angle="270" android:startColor="#FFF3F5F8" android:endColor="#FFD7DDE5" />
+            <stroke android:width="1dp" android:color="#FFFFFFFF" />
             <corners android:radius="21dp" />
         </shape>
     </item>
-    <!-- Reorder button while reorder mode is on (focus is on the tiles then). -->
     <item android:state_activated="true">
         <shape android:shape="rectangle">
-            <solid android:color="#596EC1FF" />
-            <stroke android:width="1.5dp" android:color="#FF6EC1FF" />
+            <solid android:color="#665E738B" />
+            <stroke android:width="1.5dp" android:color="#FFC4D3E3" />
             <corners android:radius="21dp" />
         </shape>
     </item>
     <item>
         <shape android:shape="rectangle">
-            <gradient android:angle="270" android:startColor="#2EFFFFFF" android:endColor="#14FFFFFF" />
-            <stroke android:width="1dp" android:color="#38FFFFFF" />
+            <gradient android:angle="270" android:startColor="#384C5563" android:endColor="#22303945" />
+            <stroke android:width="1dp" android:color="#667D8999" />
             <corners android:radius="21dp" />
         </shape>
     </item>
