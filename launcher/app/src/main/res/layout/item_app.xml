@@ -13,6 +13,7 @@
         android:layout_height="101dp"
         android:layout_gravity="center_horizontal|top"
         android:background="@drawable/tile_bg"
+        android:elevation="9dp"
         android:focusable="true"
         android:clickable="true">
 
@@ -23,10 +24,17 @@
             android:scaleType="centerCrop"
             android:contentDescription="@null" />
 
+        <!-- NOIR glass tint is intentionally above the app artwork, unlike the old hidden tile background. -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#55030A12"
+            android:importantForAccessibility="no" />
+
         <ImageView
             android:id="@+id/icon"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="58dp"
+            android:layout_height="58dp"
             android:layout_gravity="center"
             android:layout_marginBottom="14dp"
             android:visibility="gone"
