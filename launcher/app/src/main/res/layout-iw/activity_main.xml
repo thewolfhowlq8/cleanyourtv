@@ -14,6 +14,40 @@
         android:layout_height="match_parent"
         android:importantForAccessibility="no" />
 
+    <!-- NOIR architectural centerpiece: a new full-width visual hierarchy above the dock. -->
+    <LinearLayout
+        android:id="@+id/noirFeature"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="70dp"
+        android:layout_marginEnd="70dp"
+        android:layout_marginBottom="130dp"
+        android:orientation="vertical"
+        android:focusable="false"
+        android:importantForAccessibility="no">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="N O I R   /   0 3"
+            android:textColor="#FF9DB9CE"
+            android:textSize="13sp"
+            android:letterSpacing="0.2"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="ENTERTAINMENT, REDEFINED"
+            android:textColor="#FFF1F6FC"
+            android:textSize="32sp"
+            android:fontFamily="sans-serif-light"/>
+        <View
+            android:layout_width="100dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="20dp"
+            android:background="#FF92B6D0"/>
+    </LinearLayout>
+
     <!-- Cinematic top shelf (cinematic_home): the focused dock app's artwork, a few pixels across and
          stretched over the screen, which softens it like a blur without the cost of one. Hidden otherwise. -->
     <ImageView
