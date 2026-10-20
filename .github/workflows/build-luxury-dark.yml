@@ -21,8 +21,14 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
+      # GitHub-hosted Ubuntu runners include Android SDK command-line tools.
+      # Avoid setup-android's legacy 'tools' package request, which fails upstream.
+      - name: Verify Android SDK
+        shell: bash
+        run: |
+          echo "ANDROID_HOME=${ANDROID_HOME}"
+          test -d "${ANDROID_HOME}/platforms" || { echo 'Android SDK platforms missing'; exit 1; }
+          test -d "${ANDROID_HOME}/build-tools" || { echo 'Android SDK build-tools missing'; exit 1; }
       - name: Build debug APK
         working-directory: launcher
         run: bash ./gradlew --no-daemon :app:assembleDebug
