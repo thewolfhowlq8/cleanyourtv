@@ -13,7 +13,7 @@
         android:layout_height="101dp"
         android:layout_gravity="center_horizontal|top"
         android:background="@drawable/tile_bg"
-        android:elevation="9dp"
+        android:elevation="6dp"
         android:focusable="true"
         android:clickable="true">
 
@@ -28,7 +28,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#55030A12"
+            android:background="#44040A10"
             android:importantForAccessibility="no" />
 
         <ImageView
