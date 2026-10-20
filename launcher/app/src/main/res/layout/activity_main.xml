@@ -5,6 +5,13 @@
     android:layout_height="match_parent"
     android:background="@drawable/midnight_backdrop">
 
+    <!-- Time-of-day backdrop, drawn once a minute (config.xml sky_intensity; 0 keeps it hidden). -->
+    <com.gathin.tvhome.SkyView
+        android:id="@+id/sky"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:importantForAccessibility="no" />
+
     <!-- Distinctive NOIR identity: visible on the actual home screen, not only the installer. -->
     <TextView
         android:layout_width="wrap_content"
@@ -16,13 +23,6 @@
         android:textSize="14sp"
         android:letterSpacing="0.16"
         android:fontFamily="sans-serif-light"
-        android:importantForAccessibility="no" />
-
-    <!-- Time-of-day backdrop, drawn once a minute (config.xml sky_intensity; 0 keeps it hidden). -->
-    <com.gathin.tvhome.SkyView
-        android:id="@+id/sky"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:importantForAccessibility="no" />
 
     <!-- Cinematic top shelf (cinematic_home): the focused dock app's artwork, a few pixels across and
