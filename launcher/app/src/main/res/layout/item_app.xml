@@ -2,8 +2,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="8dp"
-    android:paddingBottom="8dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
     android:clipChildren="false"
     android:clipToPadding="false">
 
@@ -60,7 +60,7 @@
         android:ellipsize="end"
         android:alpha="0"
         android:translationY="-6dp"
-        android:textColor="#F2FFFFFF"
+        android:textColor="#FFE1EAF4"
         android:textSize="14sp"
         android:fontFamily="@font/outfit_medium"
         android:letterSpacing="0.02" />
