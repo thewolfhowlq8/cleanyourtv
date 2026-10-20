@@ -5,6 +5,19 @@
     android:layout_height="match_parent"
     android:background="@drawable/midnight_backdrop">
 
+    <!-- Distinctive NOIR identity: visible on the actual home screen, not only the installer. -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_marginTop="20dp"
+        android:text="C L E A N Y O U R T V    /    N O I R"
+        android:textColor="#B4C8D8E9"
+        android:textSize="14sp"
+        android:letterSpacing="0.16"
+        android:fontFamily="sans-serif-light"
+        android:importantForAccessibility="no" />
+
     <!-- Time-of-day backdrop, drawn once a minute (config.xml sky_intensity; 0 keeps it hidden). -->
     <com.gathin.tvhome.SkyView
         android:id="@+id/sky"
