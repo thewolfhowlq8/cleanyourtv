@@ -31,7 +31,7 @@ jobs:
           test -d "${ANDROID_HOME}/build-tools" || { echo 'Android SDK build-tools missing'; exit 1; }
       - name: Build debug APK
         working-directory: launcher
-        run: bash ./gradlew --no-daemon :app:assembleDebug -PlauncherApplicationId=com.gathin.tvhome.luxurydark
+        run: bash ./gradlew --no-daemon :app:assembleDebug -PlauncherApplicationId=com.gathin.tvhome.midnightglass
       - name: Name direct-install APK
         shell: bash
         run: |
